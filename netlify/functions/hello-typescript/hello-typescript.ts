@@ -49,8 +49,8 @@ const handler = async (event: HandlerEvent, context: HandlerContext) => {
 			spiceLevel: "mild",
 		}
 
-		const sandwich = (sandwich: Sandwich) => {
-			switch (sandwich.type) {
+		const sandwich = (sandwich: string) => {
+			switch (sandwich) {
 				case "pizza":
 					return pizza
 				case "hotdog":
@@ -64,7 +64,7 @@ const handler = async (event: HandlerEvent, context: HandlerContext) => {
 
 		return {
 			statusCode: 200,
-			body: JSON.stringify({ message: `Hello ${sandwich}` }),
+			body: JSON.stringify({ message: `Hello ${sandwich(type)}` }),
 		}
 	} catch (error) {
 		return { statusCode: 500, body: error.toString() }
